@@ -35,8 +35,8 @@ def pattern_calc(line=40):
 
     while line > 0:
         line -= 1
-        groups = groupby(temp1)
-        result = [(str(sum(1 for _ in group)) + digit) for digit, group in groups]
+        groups = groupby(temp1, key=lambda char: char)
+        result = [(str(len(list(group))) + digit) for digit, group in groups]
         temp2 = ''.join(result)
         temp1 = temp2
 
@@ -49,5 +49,4 @@ start = time()
 result = pattern_calc(choice)
 print(result)
 print(len(result))
-stop = time()
-print("{} seconds".format(stop-start))
+print("{} seconds".format(time()-start))
